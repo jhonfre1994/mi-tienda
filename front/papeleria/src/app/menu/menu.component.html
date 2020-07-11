@@ -1,0 +1,14 @@
+<p-sidebar [(visible)]="mostrarmenu">
+    <p-panelMenu [model]="items" [style]="{'width':'250px'}"></p-panelMenu>
+</p-sidebar>
+
+<p-toolbar>
+    <div class="ui-toolbar-group-left">
+        <button pButton type="button" style="width: 150px;" (click)="mostrarmenus()" label="Menú"
+            icon="pi pi-id-card"></button>
+    </div>
+</p-toolbar>
+
+
+
+<router-outlet></router-outlet>
