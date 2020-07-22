@@ -41,6 +41,12 @@ public class ProductoController {
         return ResponseEntity.ok(res);
     }
 
+    @GetMapping("/listarTodosConCantidad")
+    public ResponseEntity<?> listarTodosConCantidad() {
+        List<ProductoDTO> res = productoService.listarProductosConCantidad();
+        return ResponseEntity.ok(res);
+    }
+
     @PostMapping("/")
     public ResponseEntity<?> guardarProducto(@RequestBody ProductoDTO producto) {
         ProductoDTO res = productoService.guardarProducto(producto);

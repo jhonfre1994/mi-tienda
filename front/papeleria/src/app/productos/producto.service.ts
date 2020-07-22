@@ -21,10 +21,14 @@ export class ProductoService {
   }
 
   guardar(producto: ProductoDTO): Observable<ProductoDTO> {
-    return this.http.post<ProductoDTO>(environment.url + "api/v.1/producto/",producto, this.header)
+    return this.http.post<ProductoDTO>(environment.url + "api/v.1/producto/", producto, this.header)
   }
 
   eliminar(id: number): Observable<ProductoDTO> {
     return this.http.delete<ProductoDTO>(environment.url + "api/v.1/producto/" + id, this.header)
+  }
+
+  listarTodosConCantidad(): Observable<ProductoDTO[]> {
+    return this.http.get<ProductoDTO[]>(environment.url + "api/v.1/producto/listarTodosConCantidad")
   }
 }

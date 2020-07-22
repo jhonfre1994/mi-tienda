@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { ProductosComponent } from './productos/productos.component';
 import { MenuComponent } from './menu/menu.component';
+import { VentaProdcutoTemporalComponent } from './venta-prodcuto-temporal/venta-prodcuto-temporal.component';
+import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductosComponent,
-    MenuComponent
+    MenuComponent,
+    VentaProdcutoTemporalComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,

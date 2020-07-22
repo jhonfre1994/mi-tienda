@@ -6,7 +6,9 @@
 package com.papeleria.repository;
 
 import com.papeleria.entity.Producto;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,6 +16,11 @@ import org.springframework.stereotype.Repository;
  * @author jhonfre
  */
 @Repository
-public interface ProductoRepository extends JpaRepository<Producto, Integer>{
+public interface ProductoRepository extends JpaRepository<Producto, Integer> {
+
+    @Query(value = "SELECT * FROM PRODUCTO \n"
+            + "WHERE CANTIDAD > 0", nativeQuery = true)
+    List<Producto> listarProductosConCantidad();
     
+
 }

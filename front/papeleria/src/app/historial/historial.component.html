@@ -1,0 +1,64 @@
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+
+<div style="font-size: 30px; margin-top: 25px;">
+    <strong>Historial ventas</strong>
+</div>
+
+<div>
+    <div class="ui-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-3">
+            <label>Fecha</label>
+            <p-calendar [(ngModel)]="fecha" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030"
+                [readonlyInput]="true">
+            </p-calendar>
+        </div>
+        <div class="p-field p-col-12 p-md-3">
+            <button style="margin-top: 27px;" pButton type="button" label="Guardar" class="ui-button-success"
+                (click)="listarTodos()"></button>
+        </div>
+    </div>
+</div>
+
+<div class="p-grid" style="margin-top: 30px;" *ngIf="reporte != null || reporte != undefined">
+    <div class="p-col-12 p-md-6 p-lg-4">
+
+        <p-card header="Total generado" [style]="{width: '100%'}">
+            <div style="font-size: 30px; text-align: center;"><strong>{{reporte.totalGenedadoMes}}</strong></div>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Total ganancia" [style]="{width: '100%'}">
+            <div style="font-size: 30px; text-align: center;"><strong>{{reporte.gananciaTotalMes}}</strong></div>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-4">
+        <p-card header="Total inversión " [style]="{width: '100%'}">
+            <div style="font-size: 30px; text-align: center;"><strong>{{reporte.inversionTotalMes}}</strong></div>
+        </p-card>
+
+    </div>
+</div>
+<div style="margin-top: 25px;">
+    <p-table [value]="listaHistorial">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Fecha</th>
+                <th>Total Generado</th>
+                <th>Inversión</th>
+                <th>Ganancia total</th>
+                <th>Eliminar</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td style="text-align: center;">{{car.fecha | date:'longDate'}}</td>
+                <td style="text-align: center;">{{car.totalGenerado}}</td>
+                <td style="text-align: center;">{{car.inversion}}</td>
+                <td style="text-align: center;">{{car.ganancia}}</td>
+                <td style="text-align: center;">
+                    <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                        (click)="confirmar(car)"></button>
+                </td>
+        </ng-template>
+    </p-table>
+</div>

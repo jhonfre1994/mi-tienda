@@ -20,5 +20,8 @@ public class ProductosTemporalDTO {
 
     private Integer idProductoTemporal;
     private int cantidad;
-    private ProductoDTO idProducto;
+    private ProductoDTO idProducto; 
+    private int precio;
+
+    
 }

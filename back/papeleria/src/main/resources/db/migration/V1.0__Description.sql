@@ -16,6 +16,7 @@ create table PRODUCTOS_TEMPORAL(
 id_producto_temporal serial,
 cantidad int,
 id_producto  int,
+precio int,
 constraint fk_producto_temporal foreign key (id_producto) references PRODUCTO(id_producto) on delete cascade on update cascade
 );
 
@@ -26,6 +27,8 @@ fecha date,
 total_generado int,
 ganancia int,
 inversion int,
+anio int,
+mes int,
 primary key (id_historial)
 );
 

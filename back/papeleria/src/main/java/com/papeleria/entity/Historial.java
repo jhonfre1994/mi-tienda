@@ -47,4 +47,11 @@ public class Historial implements Serializable {
 
     @Column(name = "inversion")
     private int inversion;
+
+    @Column(name = "anio")
+    private int anio;
+    
+    @Column(name = "mes")
+    private int mes;
+
 }

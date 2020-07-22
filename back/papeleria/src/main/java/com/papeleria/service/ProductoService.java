@@ -16,6 +16,8 @@ public interface ProductoService {
 
     List<ProductoDTO> listarProductos();
 
+    List<ProductoDTO> listarProductosConCantidad();
+
     ProductoDTO guardarProducto(ProductoDTO producto);
 
     ProductoDTO eliminarProducto(Integer idProducto);

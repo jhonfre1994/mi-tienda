@@ -1,0 +1,95 @@
+<p-toast></p-toast>
+<div style="margin-top: 30px;">
+    <p-tabView>
+        <p-tabPanel header="Venta" leftIcon="pi pi-calendar">
+
+            <div>
+                <form [formGroup]="formGroup">
+                    <div class="ui-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12 p-md-3">
+                            <label>Nombre</label>
+                            <p-dropdown [options]="productos" formControlName="producto" placeholder="Productos"
+                                optionLabel="nombre" [filter]="true"></p-dropdown>
+                        </div>
+                        <div class="p-field p-col-12 p-md-3">
+                            <label>Cantidad</label>
+                            <input type="number" pInputText placeholder="Cantidad" formControlName="cantidad" required>
+                        </div>
+                        <div class="p-field p-col-12 p-md-3">
+                            <label>Precio total producto</label>
+                            <input type="number" placeholder="Costo Unitario" formControlName="precio" pInputText>
+                        </div>
+                        <div class="p-field p-col-12 p-md-3">
+                            <label></label>
+                            <button [disabled]="formGroup.invalid" style="margin-top: 27px;" pButton type="button"
+                                label="Guardar" class="ui-button-success" (click)="guardar()"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <h3 class="first">Detalle Venta</h3>
+                <p-table [value]="listaVenta">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-car>
+                        <tr>
+                            <td>{{car.idProducto.nombre}}</td>
+                            <td style="text-align: center;">{{car.cantidad}}</td>
+                            <td style="text-align: center;">{{car.precio}}</td>
+                            <td style="text-align: center;">
+                                <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                                    (click)="eliminar(car)"></button></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <div style="margin-top: 50px; text-align: right; font-size: 30px;">
+                <strong>Precio total: {{precioVenta}}</strong>
+            </div>
+            <div style="margin-top: 15px; text-align: right;">
+                <button [disabled]="listaVenta.length == 0" pButton type="button" label="Vender"
+                    class="ui-button-success" (click)="generarVenta();"></button>
+            </div>
+
+
+        </p-tabPanel>
+        <p-tabPanel header="Resumen día" leftIcon="pi pi-inbox">
+            <div style="margin-top: 25px;">
+                <p-table [value]="resumenDiaList">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-car>
+                        <tr>
+                            <td>{{car.idProducto.nombre}}</td>
+                            <td style="text-align: center;">{{car.cantidad}}</td>
+                            <td style="text-align: center;">{{car.precio}}</td>
+                            <td style="text-align: center;">
+                                <button pButton type="button" icon="pi pi-trash" class="ui-button-danger"
+                                    (click)="eliminarTemporal(car)"></button></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <div style="margin-top: 15px; text-align: right;">
+                <button [disabled]="resumenDiaList.length == 0" pButton type="button" label="Cerrar caja"
+                    class="ui-button-success" (click)="cerrarCaja();"></button>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+</div>

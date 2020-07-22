@@ -24,4 +24,8 @@ public class HistorialDTO {
     private int totalGenerado;
     private int ganancia;
     private int inversion;
+    private int anio;
+    private int mes;
+    
+    //datos adicionales
 }

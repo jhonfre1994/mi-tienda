@@ -23,9 +23,21 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-pencil',
         items: [
           {
-            label: 'Registrar notas', icon: 'pi pi-fw pi-chart-line',
+            label: 'Productos', icon: 'pi pi-fw pi-chart-line',
             command: (event) => {
               this.enviarProductos();
+            }
+          },
+          {
+            label: 'Ventas', icon: 'pi pi-fw pi-chart-line',
+            command: (event) => {
+              this.enviarVentas();
+            }
+          },
+          {
+            label: 'Historial', icon: 'pi pi-fw pi-chart-line',
+            command: (event) => {
+              this.enviarHistorial();
             }
           },
         ]
@@ -37,6 +49,18 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['productos'])
     this.mostrarmenu = false;
 
+  }
+
+
+  enviarVentas() {
+    this.router.navigate(['ventas'])
+    this.mostrarmenu = false;
+  }
+
+
+  enviarHistorial() {
+    this.router.navigate(['historial'])
+    this.mostrarmenu = false;
   }
 
   mostrarmenus(): boolean {

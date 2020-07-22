@@ -25,6 +25,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { FieldsetModule } from 'primeng/fieldset';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
     imports: [
@@ -53,7 +54,8 @@ import {ToastModule} from 'primeng/toast';
         MultiSelectModule,
         ToastModule,
         ConfirmDialogModule,
-        InputTextareaModule
+        InputTextareaModule,
+        CalendarModule
     ],
     exports: [
         ButtonModule,
@@ -81,7 +83,8 @@ import {ToastModule} from 'primeng/toast';
         MultiSelectModule,
         ToastModule,
         ConfirmDialogModule,
-        InputTextareaModule
+        InputTextareaModule,
+        CalendarModule
     ]
 })
 export class MaterialModule { }

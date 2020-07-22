@@ -45,6 +45,20 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    public List<ProductoDTO> listarProductosConCantidad() {
+        List<Producto> productos = productoRepository.listarProductosConCantidad();
+
+        if (productos != null && !productos.isEmpty()) {
+            List<ProductoDTO> res = new ArrayList<>();
+            for (Producto producto : productos) {
+                res.add(mapper.map(producto, ProductoDTO.class));
+            }
+            return res;
+        }
+        throw new BadRequestException("No hay productos disponibles");
+    }
+
+    @Override
     public ProductoDTO guardarProducto(ProductoDTO producto) {
         Producto res = new Producto();
         res = productoRepository.save(mapper.map(producto, Producto.class));

@@ -40,6 +40,9 @@ public class ProductosTemporal implements Serializable {
 
     @Column(name = "cantidad")
     private int cantidad;
+    
+    @Column(name = "precio")
+    private int precio;
 
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     @ManyToOne

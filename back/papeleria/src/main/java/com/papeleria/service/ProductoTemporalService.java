@@ -16,8 +16,8 @@ public interface ProductoTemporalService {
 
     List<ProductosTemporalDTO> listarTodos();
 
-    ProductosTemporalDTO guardarProductoTem(ProductosTemporalDTO productoT);
-
     ProductosTemporalDTO eliminarProdcutoTem(Integer id);
+    
+    boolean guardarProductos(List<ProductosTemporalDTO> lista);
 
 }

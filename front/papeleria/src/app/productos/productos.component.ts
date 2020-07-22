@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ProductoService } from './producto.service';
 import { ProductoDTO } from '../model/ProductoDTO';
 import { r3JitTypeSourceSpan } from '@angular/compiler';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css'],
-  providers: [ProductoService]
+  providers: [ProductoService, MessageService]
 })
 export class ProductosComponent implements OnInit {
 
@@ -16,7 +17,8 @@ export class ProductosComponent implements OnInit {
   public listaProductos: Array<ProductoDTO> = []
   public productoDTO: ProductoDTO = new ProductoDTO();
   constructor(private formBuilder: FormBuilder,
-    private productoService: ProductoService) { }
+    private productoService: ProductoService,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -31,6 +33,18 @@ export class ProductosComponent implements OnInit {
 
     })
 
+    this.formGroup.controls["cantidad"].valueChanges.subscribe(x => {
+
+      let canti = Number(this.formGroup.controls["cantidad"].value);
+      let costo = Number(this.formGroup.controls["costoUnitario"].value)
+      let res = canti * costo
+      this.formGroup.controls['costoTotal'].setValue(res);
+
+    })
+  }
+
+  public showToast(tipo: string, resumen: string, detalle: string): void {
+    this.messageService.add({ severity: tipo, summary: resumen, detail: detalle })
   }
 
   buildForm() {
@@ -76,7 +90,7 @@ export class ProductosComponent implements OnInit {
         console.log(res)
         this.nuevo()
         this.listarTodos();
-
+        this.showToast("success", "Bien", "Producto guardado correctamente");
       }
     })
   }
@@ -97,10 +111,11 @@ export class ProductosComponent implements OnInit {
     this.productoDTO = new ProductoDTO();
   }
 
-  eliminar(pro :ProductoDTO){
+  eliminar(pro: ProductoDTO) {
     this.productoService.eliminar(pro.idProducto).subscribe(res => {
-      if(res != null){
+      if (res != null) {
         this.listarTodos();
+        this.showToast("success", "Bien", "Producto eliminado correctamente");
       }
     })
   }

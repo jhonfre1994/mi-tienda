@@ -10,6 +10,7 @@ import com.papeleria.service.ProductoTemporalService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/v.1/productoTemporal")
+@CrossOrigin(origins = "*")
 public class ProductoTemporalController {
  
     @Autowired
@@ -40,8 +42,8 @@ public class ProductoTemporalController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> guardarProducto(@RequestBody ProductosTemporalDTO producto) {
-        ProductosTemporalDTO res = productoTemporalService.guardarProductoTem(producto);
+    public ResponseEntity<?> guardarProducto(@RequestBody List<ProductosTemporalDTO> productos) {
+        boolean res = productoTemporalService.guardarProductos(productos);
         return ResponseEntity.ok(res);
     }
 
