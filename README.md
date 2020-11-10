@@ -1,12 +1,12 @@
 # Mi tienda
 
-Aplicacion basica para el manejo y administracion de una tienda pequeña.
+Aplicacion basica para el manejo y administración de una tienda pequeña.
 
 ## Funcionalidades 
 
-* gestion de productos de cualquier tipo
-* vista para generar una venta con el total de la venta
-* historial mensual de la ventas con informacion detallada de cuanto fue el neto generado y cuando fue 
+* gestion de productos de cualquier tipo.
+* vista para generar una venta con el total de la venta con el detalle de productos a vender.
+* historial mensual de la ventas con información detallada de cuanto fue el neto generado y cuando fue 
 el totat de lo vendido.
 
 ## Construido con 🛠️
